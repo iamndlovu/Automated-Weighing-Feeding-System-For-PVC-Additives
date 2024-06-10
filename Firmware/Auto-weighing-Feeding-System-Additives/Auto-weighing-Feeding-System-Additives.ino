@@ -118,8 +118,8 @@ int port = 5000;
 WiFiClient wifi;
 HttpClient client = HttpClient(wifi, serverAddress, port);
 
-String servoOpenEndpoint = "/servo/open";
-String servoCloseEndpoint = "/servo/close";
+String servoOpenEndpoint = "/servo";
+String servoCloseEndpoint = "/servo";
 String weightEndpoint = "/weight";
 String pvcEndpoint = "/pvc";
 String completeEndpoint = "/complete";
@@ -294,6 +294,8 @@ void closeServo3() {
 }
 
 void mixAdditives(Blend blend) {
+  Serial.print("Loading ");
+  Serial.println(blend.getType());
   JsonDocument weightObject;
   String weightObjectString;
 

@@ -11,7 +11,7 @@ router.route('/').get(async (req, res) => {
 });
 
 router.route('/').post(async (req, res) => {
-  const { data } = req.body();
+  const { data } = req.body;
   try {
     const _weight = Number(data);
     if (!isNaN(weight)) throw new Error('weight not a number');

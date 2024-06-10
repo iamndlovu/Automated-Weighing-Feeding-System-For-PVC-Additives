@@ -12,7 +12,7 @@ router.route('/').get(async (req, res) => {
 });
 
 router.route('/').post(async (req, res) => {
-  const { status, servo } = req.body();
+  const { status, servo } = req.body;
 
   try {
     switch (Number(servo)) {

@@ -11,14 +11,15 @@ router.route('/').get(async (req, res) => {
 });
 
 router.route('/').post(async (req, res) => {
-  const { data } = req.body();
+  const { data } = req.body;
   try {
     selected = Number(data);
-    if (!isNaN(selected)) throw new Error('Selected not a number');
+    if (isNaN(selected)) throw new Error('Selected not a number');
     else if (selected < 0 || selected > 5)
       throw new Error('Selected out of range');
     else res.json(selected);
   } catch (err) {
+    console.log(err);
     res.status(400).json('Error: ' + err);
   }
 });
