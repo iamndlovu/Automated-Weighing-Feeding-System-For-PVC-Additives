@@ -1,0 +1,49 @@
+.Statistics {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  & > h1 {
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    margin-bottom: 1.6rem;
+    text-decoration: underline;
+  }
+
+  & > div {
+    width: 95%;
+    color: #444;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-auto-rows: max-content;
+    row-gap: 2rem;
+
+    article {
+      width: 100%;
+
+      h2 {
+        margin-bottom: 1rem;
+      }
+
+      ul {
+        list-style: none;
+
+        li {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        .line {
+          height: 1px;
+          background-color: #898989;
+          width: 100%;
+          margin: 0.25rem 0;
+        }
+      }
+    }
+  }
+}

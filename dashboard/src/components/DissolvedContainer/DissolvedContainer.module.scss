@@ -1,0 +1,91 @@
+.DissolvedContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+
+  & > div {
+    width: 80%;
+    font-weight: 600;
+
+    &.dissolvedTxt {
+      font-size: 0.92rem;
+      margin-bottom: 1rem;
+
+      .dissolvedHead {
+        margin-right: 1rem;
+      }
+
+      .dissolvedVal {
+        display: inline-block;
+        padding: 0.2rem 0.5rem;
+        background-color: white;
+        border: 1px solid #808080;
+        border-radius: 8px;
+      }
+    }
+
+    &.dissolvedScale {
+      height: 2rem;
+      margin: 1rem 0 4rem;
+      border: 2px solid #888;
+      border-radius: 5px;
+      position: relative;
+      background-color: white;
+
+      .dissolvedScaleCenterMark {
+        width: 2px;
+        height: 100%;
+        background-color: #888;
+        display: inline-block;
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        z-index: 2;
+      }
+
+      .dissolvedScaleFill {
+        height: 100%;
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        // z-index: 2;
+        transition: all 0.5s ease-out;
+      }
+
+      .normalTxt,
+      .highTxt {
+        position: absolute;
+        bottom: -1.3rem;
+        font-weight: 400;
+        font-size: 0.8rem;
+      }
+
+      .normalTxt {
+        right: 52%;
+      }
+
+      .highTxt {
+        right: 2%;
+      }
+    }
+
+    &.dissolvedAction {
+      & > div {
+        display: flex;
+        align-items: center;
+
+        span:first-child {
+          margin-right: 4rem;
+        }
+
+        &:last-child {
+          margin-top: 0.4rem;
+        }
+      }
+    }
+  }
+}

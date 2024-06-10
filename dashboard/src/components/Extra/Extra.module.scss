@@ -1,0 +1,73 @@
+.Extra {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  button {
+    cursor: pointer;
+    text-transform: capitalize;
+    font-weight: 600;
+    background-color: #333;
+    color: aliceblue;
+    border: 2px solid #8e8e8e;
+    border-radius: 7px;
+    padding: 0.25rem 1.16rem;
+    margin: 0;
+    transition: all 0.5s ease-out;
+
+    &:hover {
+      background-color: #fff;
+      color: #444;
+      padding: 0.1rem 1.01rem;
+      margin: 0.15rem;
+    }
+  }
+
+  & > header,
+  & > menu {
+    width: 95%;
+  }
+
+  header {
+    margin-bottom: 2rem;
+    flex-basis: content;
+
+    & > h1 {
+      text-transform: uppercase;
+      font-size: 1.4rem;
+      margin-bottom: 1.1rem;
+    }
+
+    & > p {
+      display: flex;
+      justify-content: space-between;
+
+      & > span > span {
+        text-transform: capitalize;
+        text-decoration: underline;
+        display: inline-block;
+        font-weight: 700;
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  menu {
+    flex-grow: 0;
+    height: 6rem;
+    nav,
+    ul {
+      height: 100%;
+    }
+    ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      column-gap: 2rem;
+      row-gap: 1rem;
+    }
+  }
+}

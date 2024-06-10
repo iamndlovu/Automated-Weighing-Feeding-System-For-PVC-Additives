@@ -1,0 +1,9 @@
+{
+  "name": "automated-weighing-feeding-system-for-pvc-additives_server",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  }
+}

@@ -1,0 +1,23 @@
+.box {
+  width: 1.3rem;
+  height: 1.3rem;
+  border: 1px #888;
+  display: inline-block;
+  background: transparent;
+
+  &.success {
+    background-color: rgb(12, 245, 12);
+  }
+
+  &.warning {
+    background-color: yellow;
+  }
+
+  &.default {
+    background-color: #878787;
+  }
+
+  &.danger {
+    background-color: red;
+  }
+}

@@ -1,0 +1,41 @@
+.ConductivityContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+
+  & > div {
+    width: 80%;
+    font-weight: 600;
+
+    &.conductivityTxt {
+      font-size: 1.01rem;
+      margin-bottom: 1rem;
+
+      .conductivityHead {
+        margin-right: 1rem;
+      }
+
+      .conductivityVal {
+        display: inline-block;
+        padding: 0.2rem 0.9rem;
+        background-color: white;
+        border: 1px solid #808080;
+        border-radius: 8px;
+      }
+    }
+
+    &.conductivityAction {
+      & > div {
+        display: flex;
+        align-items: center;
+
+        span:first-child {
+          margin-right: 1rem;
+        }
+      }
+    }
+  }
+}
