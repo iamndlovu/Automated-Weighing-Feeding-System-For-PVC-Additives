@@ -106,13 +106,13 @@ bool servo1Status, servo2Status, servo3Status;
 
 // hx711 object
 HX711 scale;
-uint8_t dataPin = 16;
+uint8_t dataPin = 18;
 uint8_t clockPin = 4;
 
-const char* ssid     = "test";
-const char* password = "12345677";
+const char* ssid     = "ULUKILE";
+const char* password = "govereulukile";
 
-char serverAddress[] = "10.42.0.1";  // server address
+char serverAddress[] = "192.168.81.71";  // server address
 int port = 5000;
 
 WiFiClient wifi;
@@ -136,10 +136,9 @@ void setup() {
   servo1.attach(12);  // attaches the servo on pin 12 to the servo object
   servo2.attach(13);  // attaches the servo on pin 13 to the servo object
   servo3.attach(14);  // attaches the servo on pin 14 to the servo object
-  delay(1000);
-  servo1.write(closeDeg);
-  servo2.write(closeDeg);
-  servo3.write(closeDeg);
+  servo1.write(90);
+  servo2.write(90);
+  servo3.write(90);
   servo1Status = false;
   servo2Status = false;
   servo3Status = false;
@@ -240,55 +239,78 @@ void loop(){
 }
 
 void openServo1() {
-  for(int deg = closeDeg; deg <= openDeg; deg++) {
-    servo1.write(deg);
-    delay(50);
-  }
+  // for(int deg = closeDeg; deg <= openDeg; deg++) {
+  //   servo1.write(deg);
+  //   delay(50);
+  // }
+
+  servo1.write(80);
+  delay(500);
+  servo1.write(90);
 
   servo1Status = true;
 }
 
 void openServo2() {
-  for(int deg = closeDeg; deg <= openDeg; deg++) {
-    servo2.write(deg);
-    delay(50);
-  }
+  // for(int deg = closeDeg; deg <= openDeg; deg++) {
+  //   servo2.write(deg);
+  //   delay(50);
+  // }
+
+  servo2.write(80);
+  delay(500);
+  servo2.write(90);
 
   servo2Status = true;
 }
 
 void openServo3() {
-  for(int deg = closeDeg; deg <= openDeg; deg++) {
-    servo3.write(deg);
-    delay(50);
-  }
+  // for(int deg = closeDeg; deg <= openDeg; deg++) {
+  //   servo3.write(deg);
+  //   delay(50);
+  // }
+
+  servo3.write(80);
+  delay(500);
+  servo3.write(90);
 
   servo3Status = true;
 }
 
 void closeServo1() {
-  for(int deg = openDeg; deg >= closeDeg; deg--) {
-    servo1.write(deg);
-    delay(50);
-  }
+  // for(int deg = openDeg; deg >= closeDeg; deg--) {
+  //   servo1.write(deg);
+  //   delay(50);
+  // }
+
+  servo1.write(100);
+  delay(500);
+  servo1.write(90);
 
   servo1Status = false;
 }
 
 void closeServo2() {
-  for(int deg = openDeg; deg >= closeDeg; deg--) {
-    servo2.write(deg);
-    delay(50);
-  }
+  // for(int deg = openDeg; deg >= closeDeg; deg--) {
+  //   servo2.write(deg);
+  //   delay(50);
+  // }
+
+  servo2.write(100);
+  delay(500);
+  servo2.write(90);
 
   servo2Status = false;
 }
 
 void closeServo3() {
-  for(int deg = openDeg; deg >= closeDeg; deg--) {
-    servo3.write(deg);
-    delay(50);
-  }
+  // for(int deg = openDeg; deg >= closeDeg; deg--) {
+  //   servo3.write(deg);
+  //   delay(50);
+  // }
+  servo3.write(100);
+  delay(500);
+  servo3.write(90);
 
   servo3Status = false;
 }
@@ -321,11 +343,10 @@ void mixAdditives(Blend blend) {
   Serial.print("Loading not complete status update response status: ");
   Serial.println(PostHttpRequest(completeEndpoint, completeObjectString).getStatus());
 
-  while (scale.get_units(20) < blend.getAdd1Weight()) {
-    servo1.write(openDeg);
-  }
+  // while (scale.get_units(20) < blend.getAdd1Weight()) {
+  // }
+  delay(1549 * blend.getAdd1Weight());
   closeServo1();
-  servo1.write(closeDeg);
   // send servo status to server
   servoObject["status"] = servo1Status;
   servoObject["servo"] = 1;
@@ -348,11 +369,10 @@ void mixAdditives(Blend blend) {
   serializeJson(servoObject, servoObjectString);
   Serial.print("Server servo 2 open status update response status: ");
   Serial.println(PostHttpRequest(servoOpenEndpoint, servoObjectString).getStatus());
-  while (scale.get_units(20) < blend.getAdd1Weight() + blend.getAdd2Weight()) {
-    servo2.write(openDeg);
-  }
+  // while (scale.get_units(20) < blend.getAdd1Weight() + blend.getAdd2Weight()) {
+  // }
+  delay(1549 * blend.getAdd2Weight());
   closeServo2();
-  servo2.write(closeDeg);
 
   // send servo status to server
   servoObject["status"] = servo2Status;
@@ -377,11 +397,11 @@ void mixAdditives(Blend blend) {
   Serial.print("Server servo 3 open status update response status: ");
   Serial.println(PostHttpRequest(servoOpenEndpoint, servoObjectString).getStatus());
 
-  while (scale.get_units(20) < blend.getAdd1Weight() + blend.getAdd2Weight() + blend.getAdd3Weight()) {
-    servo3.write(openDeg);
-  }
+  // while (scale.get_units(20) < blend.getAdd1Weight() + blend.getAdd2Weight() + blend.getAdd3Weight()) {
+    
+  // }
+  delay(1549 * blend.getAdd3Weight());
   closeServo3();
-  servo3.write(closeDeg);
 
   // send servo status to server
   servoObject["status"] = servo3Status;

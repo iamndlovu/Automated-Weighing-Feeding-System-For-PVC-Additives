@@ -11,7 +11,7 @@
     "server": "npm start --prefix server",
     "client": "npm start --prefix dashboard",
     "dev": "concurrently \"npm:dev-server\" \"npm:client\"",
-    "start": "concurrently \"npm:server\" \"npm:client\""
+    "start": "concurrently \"npm:server\" \" cd dashboard && serve -s build\""
   },
   "dependencies": {
     "axios": "^1.6.8",

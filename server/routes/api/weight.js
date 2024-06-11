@@ -3,6 +3,7 @@ const router = require('express').Router();
 let weight = 0.0;
 
 router.route('/').get(async (req, res) => {
+  console.log({ weight });
   try {
     res.json(weight);
   } catch (err) {
@@ -12,9 +13,10 @@ router.route('/').get(async (req, res) => {
 
 router.route('/').post(async (req, res) => {
   const { data } = req.body;
+  console.log({ data });
   try {
     const _weight = Number(data);
-    if (!isNaN(weight)) throw new Error('weight not a number');
+    if (isNaN(weight)) throw new Error('weight not a number');
     else if (weight < 0) throw new Error('weight -ve');
     else {
       weight = _weight;

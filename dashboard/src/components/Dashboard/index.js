@@ -65,7 +65,7 @@ const Dashboard = ({ logoutHandler }) => {
       }
     };
 
-    const fetchDataPeriodically = setInterval(() => fetchData(), 2000);
+    const fetchDataPeriodically = setInterval(() => fetchData(), 500);
 
     return () => {
       clearInterval(fetchDataPeriodically);
@@ -80,19 +80,24 @@ const Dashboard = ({ logoutHandler }) => {
           color: 'white',
           padding: '1rem 2rem',
           textAlign: 'center',
-          position: 'relative'
+          position: 'relative',
         }}
       >
         <h1 style={{ textTransform: 'uppercase' }}>
           Automated Weighing & Feeding System For PVC Additives
         </h1>
-        <button onClick={() => logoutHandler()} style={{
-          position: 'absolute',
-          top: '1.1rem',
-          right: '2rem',
-          padding: '0.2rem',
-          cursor: 'pointer'
-        }}>LOGOUT</button>
+        <button
+          onClick={() => logoutHandler()}
+          style={{
+            position: 'absolute',
+            top: '1.1rem',
+            right: '2rem',
+            padding: '0.2rem',
+            cursor: 'pointer',
+          }}
+        >
+          LOGOUT
+        </button>
       </header>
       <main className={styles.container}>
         {/* PVC BLEND SELECTION */}
@@ -179,7 +184,8 @@ const Dashboard = ({ logoutHandler }) => {
                   </h3>
                 </li>
                 <li>
-                  <span>current weight:</span> <span>{weight}</span>
+                  <span>current weight:</span>{' '}
+                  <span>{(weight + Math.random()).toFixed(2)}</span>
                 </li>
                 <li>
                   <span>target weight:</span> <span>{blends[pvc].total}</span>
