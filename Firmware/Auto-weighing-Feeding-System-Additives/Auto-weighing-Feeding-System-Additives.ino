@@ -327,6 +327,12 @@ void mixAdditives(Blend blend) {
   JsonDocument completeObject;
   String completeObjectString;
 
+  // send current weight to server
+  weightObject["data"] = 0;
+  serializeJson(weightObject, weightObjectString);
+  Serial.print("Server current weight update response status: ");
+  Serial.println(PostHttpRequest(weightEndpoint, weightObjectString).getStatus());
+
   openServo1();
   // send servo status to server
   servoObject["status"] = servo1Status;
